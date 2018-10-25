@@ -41,7 +41,7 @@ public class Circle implements Drawable, Figure {
     {
         g2d.setColor(new Color(0,0,0));
         g2d.setStroke(stroke);
-        g2d.drawOval(center.getX(), center.getY(), radius, radius);
+        g2d.drawOval(center.getX()-radius, center.getY()-radius, 2*radius, 2*radius);
     }
 
     public float getStrokeSize()

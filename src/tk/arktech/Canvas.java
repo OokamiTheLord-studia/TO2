@@ -25,7 +25,7 @@ public class Canvas extends JPanel {
 //        imgG2.drawOval(100,100,1,1);
 //        imgG2.setStroke(new BasicStroke(3));
 //        imgG2.drawOval(140,140,1,1);
-
+//        imgG2.drawRect(100,100,100,20);
         g2.drawImage(img, 0, 0, w, h, null);
     }
 }

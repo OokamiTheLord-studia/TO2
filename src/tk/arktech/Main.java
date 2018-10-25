@@ -10,6 +10,10 @@ public class Main {
 			50,
 			5);
 	c.draw(gui.getCanvasGraphics());
+	Rectangle r = new Rectangle(new Point(100, 100),
+			50,
+			40);
+	r.draw(gui.getCanvasGraphics());
 
 
     }

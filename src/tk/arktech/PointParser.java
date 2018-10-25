@@ -10,6 +10,7 @@ public class PointParser extends Parser {
 
         if(sc.hasNext("[Pp]oint"))
         {
+            sc.next();
             int x = 0;
             if(sc.hasNextInt())
             {

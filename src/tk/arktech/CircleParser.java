@@ -3,55 +3,60 @@ package tk.arktech;
 import java.text.ParseException;
 import java.util.Scanner;
 
-public class LineParser extends Parser {
+public class CircleParser extends Parser {
 
     @Override
     public Object handle(Scanner sc) {
-        if(sc.hasNext("[Ll]ine"))
+
+        if(sc.hasNext("[Cc]ircle"))
         {
             sc.next();
-            Point start = new Point(0,0);
+            Point center = new Point(0,0);
             if(sc.hasNext("[Pp]oint"))
             {
                 Object tmp = this.next.handle(sc);
                 if(tmp instanceof Point)
                 {
-                    start = (Point) tmp;
+                    center = (Point) tmp;
                 }
                 else
                 {
                     try {
-                        throw new ParseException("Błąd parsowania pierwszego pkt linii", sc.match().start());
+                        throw new ParseException("Błąd parsowania środka okręgu", sc.match().start());
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
             }
-            Point end = start;
-            if(sc.hasNext("[Pp]oint"))
+            else
             {
-                Object tmp = this.next.handle(sc);
-                if(tmp instanceof Point)
-                {
-                    end = (Point) tmp;
+                try {
+                    throw new ParseException("Błędny format okręgu", sc.match().start());
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-                else
-                {
-                    try {
-                        throw new ParseException("Błąd parsowania drugiego pkt linii", sc.match().start());
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+            }
+            int radius = 0;
+            if(sc.hasNextInt())
+            {
+                radius = sc.nextInt();
+            }
+            else
+            {
+                try {
+                    throw new ParseException("Błąd parsowania promienia okręgu", sc.match().start());
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
             }
 
             if(sc.hasNextFloat())
             {
-               return new Line(start, end, sc.nextFloat());
+                return new Circle(center, radius, sc.nextFloat());
             }
             else
             {
-                return new Line(start, end);
+                return new Circle(center, radius);
             }
 
         }
@@ -70,5 +75,7 @@ public class LineParser extends Parser {
                 return null;
             }
         }
+
+
     }
 }

@@ -19,7 +19,7 @@ public class Circle implements Drawable, Figure {
         this.stroke = new BasicStroke(1);
     }
 
-    public Circle(Point center, int radius, int stroke) {
+    public Circle(Point center, int radius, float stroke) {
         this.center = center;
         if(radius<0)
         {

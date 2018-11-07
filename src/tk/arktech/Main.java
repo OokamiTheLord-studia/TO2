@@ -21,9 +21,9 @@ public class Main {
 	ArrayList<Drawable> a = fr.startParsing();
 	Rectangle r = new Rectangle(new Point(50,50),50,50);
 	r.draw(gui.getCanvasGraphics());
-	//a.get(0).draw(gui.getCanvasGraphics());
+	a.get(0).draw(gui.getCanvasGraphics());
 
-	//a.forEach((d)->(d).draw(gui.getCanvasGraphics()));
+	a.forEach((d)->(d).draw(gui.getCanvasGraphics()));
 
 
 

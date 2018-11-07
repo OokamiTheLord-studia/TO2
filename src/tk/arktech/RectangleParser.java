@@ -3,62 +3,70 @@ package tk.arktech;
 import java.text.ParseException;
 import java.util.Scanner;
 
-public class CircleParser extends Parser {
+public class RectangleParser extends Parser {
 
     @Override
     public Object handle(Scanner sc) {
 
-        if(sc.hasNext("[Cc]ircle"))
+        if(sc.hasNext("[Rr]ectangle"))
         {
             sc.next();
-            Point center = new Point(0,0);
+            Point upperLeft = new Point(0,0);
             if(sc.hasNext("[Pp]oint"))
             {
                 Object tmp = this.next.handle(sc);
                 if(tmp instanceof Point)
                 {
-                    center = (Point) tmp;
+                    upperLeft = (Point) tmp;
                 }
                 else
                 {
                     try {
-                        throw new ParseException("Błąd parsowania środka okręgu", sc.match().start());
+                        throw new ParseException("Błąd parsowania lewego górnego pkt prostokąta", sc.match().start());
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
+
+            }
+            int width = 0;
+            if(sc.hasNextInt())
+            {
+                width = sc.nextInt();
             }
             else
             {
                 try {
-                    throw new ParseException("Błędny format okręgu", sc.match().start());
+                    throw new ParseException("Błąd parsowania szerokości prostokąta", sc.match().start());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
-            int radius = 0;
+            int height = 0;
             if(sc.hasNextInt())
             {
-                radius = sc.nextInt();
+                height = sc.nextInt();
             }
             else
             {
                 try {
-                    throw new ParseException("Błąd parsowania promienia okręgu", sc.match().start());
+                    throw new ParseException("Błąd parsowania wysokości prostokąta", sc.match().start());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
-
             if(sc.hasNextInt())
             {
-                return new Circle(center, radius, sc.nextInt());
+                return new Rectangle(upperLeft, width, height, sc.nextInt());
             }
             else
             {
-                return new Circle(center, radius);
-            }
 
+
+                return new Rectangle(upperLeft, width, height);
+
+
+            }
         }
         else{
             if(this.next != null)

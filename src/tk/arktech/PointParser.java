@@ -48,8 +48,10 @@ public class PointParser extends Parser {
             }
             else
             {
+                //System.out.print(sc.next());
                 try {
                     throw new ParseException("Ostatnie ogniwo nie może sparsować", sc.match().start());
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

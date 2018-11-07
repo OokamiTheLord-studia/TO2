@@ -45,9 +45,9 @@ public class LineParser extends Parser {
                 }
             }
 
-            if(sc.hasNextFloat())
+            if(sc.hasNextInt())
             {
-               return new Line(start, end, sc.nextFloat());
+               return new Line(start, end, sc.nextInt());
             }
             else
             {

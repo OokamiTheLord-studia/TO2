@@ -3,6 +3,7 @@ package tk.arktech;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FileReader {
@@ -30,7 +31,10 @@ public class FileReader {
 
         if(sc!=null)
         {
-            sc.useDelimiter(",");
+            sc.useLocale(Locale.ENGLISH);
+
+            sc.useDelimiter("\\s*;\\s*|\r?\n");
+
         }
 
         while(sc != null && sc.hasNext())

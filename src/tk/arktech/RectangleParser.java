@@ -2,13 +2,14 @@ package tk.arktech;
 
 import java.text.ParseException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class RectangleParser extends Parser {
 
     @Override
     public Object handle(Scanner sc) {
 
-        if(sc.hasNext("[Rr]ectangle"))
+        if(sc.hasNext(Pattern.compile("[Rr]ectangle")))
         {
             sc.next();
             Point upperLeft = new Point(0,0);
